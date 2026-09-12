@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Kontejner --- */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  padding: 20px;
+}
+
+/* --- Logo --- */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 35px;
+  color: #000000;
+}
+
+.custom-logo-img {
+  width: 35px;  /* Podesi veličinu po želji, slično kao što je bila šapa */
+  height: 35px; /* Podesi visinu */
+  object-fit: contain; /* Osigurava da se slika ne deformiše */
+}
+
+.paw-icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* --- Naslov --- */
+.title {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 24px;
+  color: #000000;
+  text-align: center;
+}
+
+/* --- Forma --- */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input-label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #000000;
+  text-align: left;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1.5px solid #000000;
+  border-radius: 20px;
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+  background: transparent;
+}
+
+.input-field::placeholder {
+  color: #cccccc;
+}
+
+/* --- Dugme --- */
+.custom-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.custom-btn:hover {
+  background-color: #333333;
+}
+
+/* --- Link na dnu --- */
+.footer-text {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #000000;
+  text-align: center;
+}
+
+.register-link {
+  color: #000000;
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: bold;
+}
