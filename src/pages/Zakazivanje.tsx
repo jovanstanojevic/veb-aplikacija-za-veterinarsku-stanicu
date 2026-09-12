@@ -183,6 +183,10 @@ function Zakazivanje() {
         <section className="zakazani-termini">
           <h2>Zakazani termini</h2>
 
+        <p>
+            Ukupno zakazanih termina: {termini.length}
+        </p>
+
           {termini.length === 0 ? (
             <p className="nema-termina">
               Trenutno nema zakazanih termina.

@@ -707,6 +707,12 @@ main {
   margin: 50px auto 0;
 }
 
+.zakazani-termini > p {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+
 .zakazani-termini h2 {
   text-align: center;
   font-size: 30px;
