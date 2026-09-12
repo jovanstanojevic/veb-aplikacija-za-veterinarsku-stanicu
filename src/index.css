@@ -643,6 +643,14 @@ main {
   margin-bottom: 10px;
 }
 
+.komentar {
+  transition: 0.2s;
+}
+
+.komentar:hover {
+  transform: translateY(-3px);
+}
+
 .komentar small {
   color: #666666;
 }
