@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 function Footer() {
+    const navigate = useNavigate();
   return (
     <footer className="footer">
 
       <div className="footer-column">
-        <div className="footer-logo">
+        <div className="footer-logo"  onClick={() => navigate("/pocetna")}>
           <img
             src="/shapa.png"
             alt="HealthyPaw Logo"

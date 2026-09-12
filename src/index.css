@@ -396,6 +396,58 @@ main {
 }
 
 /* =========================
+   PROFIL
+========================= */
+
+.profil-page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-content {
+  width: 100%;
+  flex: 1;
+
+  background-color: #dcdcdc;
+
+  padding: 55px 8%;
+}
+
+.profil-info {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profil-slika {
+  width: 365px;
+  height: 365px;
+
+  object-fit: cover;
+
+  margin-bottom: 65px;
+}
+
+.profil-podaci {
+  font-size: 25px;
+  line-height: 1.4;
+}
+
+.profil-podaci p {
+  margin-bottom: 25px;
+}
+
+.profil-podaci strong {
+  font-weight: 400;
+}
+
+/* =========================
    BELI PROSTOR
 ========================= */
 
@@ -514,6 +566,8 @@ main {
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+
 
   background-color: white;
   color: black;
