@@ -209,6 +209,14 @@ function Zakazivanje() {
                   <strong>Vreme:</strong>{" "}
                   {termin.vreme}
                 </p>
+                <button
+                    type="button"
+                    onClick={() =>
+                    setTermini(termini.filter((_, i) => i !== index))
+                    }
+                >
+                    Otkaži termin
+                </button>
               </div>
             ))
           )}
