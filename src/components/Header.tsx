@@ -27,8 +27,16 @@ function Header() {
         </button>
         <button
           className="logout-button"
-          onClick={() => navigate("/")}
-        >
+            onClick={() => {
+            const potvrda = window.confirm(
+            "Da li ste sigurni da želite da se odjavite?"
+          );
+
+          if (potvrda) {
+          navigate("/");
+          }
+            }}
+          >
           Odjavi se
         </button>
       </nav>
