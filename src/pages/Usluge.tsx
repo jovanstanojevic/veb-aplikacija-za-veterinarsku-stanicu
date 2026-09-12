@@ -61,6 +61,11 @@ function Usluge() {
         </div>
 
         {aktivnaKategorija && (
+
+          <>
+            <p className="izabrana-kategorija">
+              Izabrana kategorija: <strong>{aktivnaKategorija}</strong>
+            </p>
           <div className="usluge-lista">
             <h2>{aktivnaKategorija}</h2>
 
@@ -70,6 +75,7 @@ function Usluge() {
               </div>
             ))}
           </div>
+          </>
         )}
       </main>
 
