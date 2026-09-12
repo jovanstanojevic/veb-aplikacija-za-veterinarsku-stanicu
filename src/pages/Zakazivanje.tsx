@@ -9,27 +9,77 @@ type Termin = {
   vreme: string;
 };
 
+const SACUVANI_TERMINI = "zakazaniTermini";
+
 function Zakazivanje() {
   const [usluga, setUsluga] = useState("");
   const [ljubimac, setLjubimac] = useState("");
   const [datum, setDatum] = useState("");
   const [vreme, setVreme] = useState("");
-  const [potvrda, setPotvrda] = useState<Termin | null>(null);
+
+  const [termini, setTermini] = useState<Termin[]>(() => {
+    const sacuvano = sessionStorage.getItem(SACUVANI_TERMINI);
+
+    if (!sacuvano) {
+      return [];
+    }
+
+    return JSON.parse(sacuvano);
+  });
+
+  const [poruka, setPoruka] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!usluga || !ljubimac.trim() || !datum || !vreme) {
-      alert("Molimo popunite sva polja.");
+      setPoruka("Molimo popunite sva polja.");
       return;
     }
 
-    setPotvrda({
+    // Provera da li je termin već zauzet
+    const terminZauzet = termini.some(
+      (termin) =>
+        termin.datum === datum &&
+        termin.vreme === vreme
+    );
+
+    if (terminZauzet) {
+      setPoruka(
+        "Termin u ovom vremenskom periodu je već zauzet. Izaberite drugo vreme."
+      );
+      return;
+    }
+
+    const noviTermin: Termin = {
       usluga,
-      ljubimac,
+      ljubimac: ljubimac.trim(),
       datum,
       vreme,
-    });
+    };
+
+    const noviTermini = [...termini, noviTermin];
+
+    setTermini(noviTermini);
+
+    // Pamti termine samo do kraja sesije
+    sessionStorage.setItem(
+      SACUVANI_TERMINI,
+      JSON.stringify(noviTermini)
+    );
+
+    setPoruka("Termin je uspešno zakazan!");
+
+    // Čišćenje forme
+    setUsluga("");
+    setLjubimac("");
+    setDatum("");
+    setVreme("");
+  };
+
+  const formatDatum = (datum: string) => {
+    const [godina, mesec, dan] = datum.split("-");
+    return `${dan}.${mesec}.${godina}.`;
   };
 
   return (
@@ -39,9 +89,13 @@ function Zakazivanje() {
       <main className="zakazivanje-content">
         <h1>Zakazivanje pregleda</h1>
 
-        <form className="zakazivanje-form" onSubmit={handleSubmit}>
+        <form
+          className="zakazivanje-form"
+          onSubmit={handleSubmit}
+        >
           <div className="zakazivanje-grupa">
             <label>Usluga:</label>
+
             <select
               value={usluga}
               onChange={(e) => setUsluga(e.target.value)}
@@ -49,6 +103,10 @@ function Zakazivanje() {
               <option value="">Izaberite uslugu</option>
               <option value="Opšti pregled">Opšti pregled</option>
               <option value="Vakcinacija">Vakcinacija</option>
+              <option value="Mikročipovanje">Mikročipovanje</option>
+              <option value="Trimovanje i nega dlake">
+                Trimovanje i nega dlake
+              </option>
               <option value="Lab. analize">Lab. analize</option>
               <option value="Ultrazvuk i rendgen">
                 Ultrazvuk i rendgen
@@ -56,12 +114,16 @@ function Zakazivanje() {
               <option value="Stomatološki pregled">
                 Stomatološki pregled
               </option>
-              <option value="Hitna intervencija">Hitna intervencija</option>
+              <option value="Sterilizacija">Sterilizacija</option>
+              <option value="Hitna intervencija">
+                Hitna intervencija
+              </option>
             </select>
           </div>
 
           <div className="zakazivanje-grupa">
             <label>Ime ljubimca:</label>
+
             <input
               type="text"
               placeholder="Unesite ime ljubimca"
@@ -72,6 +134,7 @@ function Zakazivanje() {
 
           <div className="zakazivanje-grupa">
             <label>Datum:</label>
+
             <input
               type="date"
               value={datum}
@@ -81,6 +144,7 @@ function Zakazivanje() {
 
           <div className="zakazivanje-grupa">
             <label>Vreme:</label>
+
             <select
               value={vreme}
               onChange={(e) => setVreme(e.target.value)}
@@ -99,32 +163,54 @@ function Zakazivanje() {
             </select>
           </div>
 
-          <button type="submit" className="zakazi-btn">
+          <button
+            type="submit"
+            className="zakazi-btn"
+          >
             Zakaži pregled
           </button>
+
+          {poruka && (
+            <p className="zakazivanje-poruka">
+              {poruka}
+            </p>
+          )}
         </form>
 
-        {potvrda && (
-          <div className="potvrda">
-            <h2>Termin je uspešno zakazan!</h2>
+        {/* ZAKAZANI TERMINI */}
+        <section className="zakazani-termini">
+          <h2>Zakazani termini</h2>
 
-            <p>
-              <strong>Usluga:</strong> {potvrda.usluga}
+          {termini.length === 0 ? (
+            <p className="nema-termina">
+              Trenutno nema zakazanih termina.
             </p>
+          ) : (
+            termini.map((termin, index) => (
+              <div
+                className="termin"
+                key={`${termin.datum}-${termin.vreme}-${index}`}
+              >
+                <h3>{termin.usluga}</h3>
 
-            <p>
-              <strong>Ljubimac:</strong> {potvrda.ljubimac}
-            </p>
+                <p>
+                  <strong>Ljubimac:</strong>{" "}
+                  {termin.ljubimac}
+                </p>
 
-            <p>
-              <strong>Datum:</strong> {potvrda.datum}
-            </p>
+                <p>
+                  <strong>Datum:</strong>{" "}
+                  {formatDatum(termin.datum)}
+                </p>
 
-            <p>
-              <strong>Vreme:</strong> {potvrda.vreme}
-            </p>
-          </div>
-        )}
+                <p>
+                  <strong>Vreme:</strong>{" "}
+                  {termin.vreme}
+                </p>
+              </div>
+            ))
+          )}
+        </section>
       </main>
 
       <Footer />
