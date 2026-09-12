@@ -16,6 +16,7 @@ function Zakazivanje() {
   const [ljubimac, setLjubimac] = useState("");
   const [datum, setDatum] = useState("");
   const [vreme, setVreme] = useState("");
+  const danas = new Date().toISOString().split("T")[0];
 
   const [termini, setTermini] = useState<Termin[]>(() => {
     const sacuvano = sessionStorage.getItem(SACUVANI_TERMINI);
@@ -137,6 +138,7 @@ function Zakazivanje() {
 
             <input
               type="date"
+              min={danas}
               value={datum}
               onChange={(e) => setDatum(e.target.value)}
             />
