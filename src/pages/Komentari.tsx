@@ -32,6 +32,12 @@ const komentari: Komentar[] = [
 ];
 
 function Komentari() {
+    const formatDatum = (datum: string) => {
+    const [godina, mesec, dan] = datum.split("-");
+
+    return `${dan}.${mesec}.${godina}.`;
+    };
+
   const [sortiranje, setSortiranje] = useState<"najstariji" | "najnoviji">(
     "najnoviji"
   );
@@ -75,7 +81,7 @@ function Komentari() {
             <div className="komentar" key={index}>
               <h3>{komentar.ime}</h3>
               <p>{komentar.tekst}</p>
-              <small>{komentar.datum}</small>
+              <small>{formatDatum(komentar.datum)}</small>
             </div>
           ))}
         </div>
