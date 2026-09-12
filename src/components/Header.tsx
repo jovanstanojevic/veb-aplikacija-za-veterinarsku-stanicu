@@ -5,17 +5,31 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="logo" onClick={() => navigate("/")}>
-        🐾 HealthyPaw
+      <div
+        className="header-logo"
+        onClick={() => navigate("/pocetna")}
+      >
+        <img
+            src="/shapa.png"
+            alt="HealthyPaw Logo"
+            className="header-logo-img"
+        />
+        <span>HealthyPaw</span>
       </div>
 
-      <nav>
-        <button onClick={() => navigate("/")}>Početna</button>
+      <nav className="header-nav">
+        <button onClick={() => navigate("/pocetna")}>Početna</button>
         <button onClick={() => navigate("/profil")}>Profil</button>
         <button onClick={() => navigate("/usluge")}>Usluge</button>
         <button onClick={() => navigate("/komentari")}>Komentari</button>
         <button onClick={() => navigate("/zakazivanje")}>
           Zakazivanje
+        </button>
+        <button
+          className="logout-button"
+          onClick={() => navigate("/")}
+        >
+          Odjavi se
         </button>
       </nav>
     </header>

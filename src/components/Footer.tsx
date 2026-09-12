@@ -1,44 +1,42 @@
-import { useNavigate } from "react-router-dom";
-
 function Footer() {
-  const navigate = useNavigate();
-
   return (
     <footer className="footer">
-      <div>
-        <div
-          className="footer-logo"
-          onClick={() => navigate("/")}
-        >
-          🐾HealthyPaw
+
+      <div className="footer-column">
+        <div className="footer-logo">
+          <img
+            src="/shapa.png"
+            alt="HealthyPaw Logo"
+            className="footer-logo-img"
+          />
+          <span>HealthyPaw</span>
         </div>
 
-        <i>
+        <p>
           Veterinarska stanica za pse
           <br />
           mačke i ostale ljubimce
-        </i>
+        </p>
       </div>
 
-      <div>
+      <div className="footer-column">
         <strong>Kontakt:</strong>
-        <br />
-        <i>
+        <p>
           Ulica Vojvode Mišića 14, Niš
           <br />
           060 456 7890
-        </i>
+        </p>
       </div>
 
-      <div>
+      <div className="footer-column">
         <strong>Radno Vreme:</strong>
-        <br />
-        <i>
+        <p>
           Pon – Sub: 08:00–18:00
           <br />
           Nedelja: ne radimo
-        </i>
+        </p>
       </div>
+
     </footer>
   );
 }

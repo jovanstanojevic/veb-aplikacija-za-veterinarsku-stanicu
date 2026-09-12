@@ -1,24 +1,33 @@
 import { useState } from 'react';
 import Button from '../components/Buttno.jsx';
 import mojLogo from '../assets/shapa.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!username.trim() || !password.trim()) {
+      alert('Molimo unesite korisničko ime i lozinku.');
+      return;
+    }
+
     console.log('Prijava:', { username, password });
+
+    navigate('/pocetna');
   };
 
   return (
     <div className="login-container">
       <div className="logo">
-        <img 
-          src={mojLogo} 
-          alt="HealthyPaw Logo" 
-          className="custom-logo-img" /* Dodajemo novu klasu za CSS */
+        <img
+          src={mojLogo}
+          alt="HealthyPaw Logo"
+          className="custom-logo-img"
         />
         <span>HealthyPaw</span>
       </div>
@@ -48,11 +57,16 @@ function Login() {
           />
         </div>
 
-        <Button type="submit">Prijavi se</Button>
+        <Button type="submit">
+          Prijavi se
+        </Button>
       </form>
 
       <p className="footer-text">
-        Nemate nalog &rarr; <Link to="/register" className="register-link">Registracija</Link>
+        Nemate nalog &rarr;{' '}
+        <Link to="/register" className="register-link">
+          Registracija
+        </Link>
       </p>
     </div>
   );
