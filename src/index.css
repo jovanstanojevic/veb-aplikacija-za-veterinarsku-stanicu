@@ -552,6 +552,23 @@ main {
   .usluga {
     font-size: 17px;
   }
+
+}
+
+.sakrij-btn {
+  display: block;
+  margin: 25px auto 0;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 25px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.sakrij-btn:hover {
+  background-color: #eeeeee;
 }
 
 /* =========================

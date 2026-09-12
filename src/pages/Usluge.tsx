@@ -61,6 +61,15 @@ function Usluge() {
         </div>
 
         {aktivnaKategorija && (
+          <button
+            className="sakrij-btn"
+            onClick={() => setAktivnaKategorija(null)}
+          >
+            Sakrij usluge
+          </button>
+)}
+
+        {aktivnaKategorija && (
 
           <>
             <p className="izabrana-kategorija">
