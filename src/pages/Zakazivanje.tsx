@@ -38,6 +38,11 @@ function Zakazivanje() {
       return;
     }
 
+    if (ljubimac.trim().length < 2) {
+        setPoruka("Ime ljubimca mora imati najmanje 2 karaktera.");
+        return;
+    }
+
     // Provera da li je termin već zauzet
     const terminZauzet = termini.some(
       (termin) =>
