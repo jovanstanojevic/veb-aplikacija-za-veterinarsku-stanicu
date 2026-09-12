@@ -4,6 +4,7 @@ import Login from './pages/Login.jsx'
 import Pocetna from './pages/Pocetna.jsx';
 import Profil from "./pages/Profil.jsx";
 import Usluge from "./pages/Usluge.tsx";
+import Komentari from "./pages/Komentari.tsx";
 import './index.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/pocetna" element={<Pocetna />} />
       <Route path="/profil" element={<Profil />} />
       <Route path="/usluge" element={<Usluge />} />
+      <Route path="/komentari" element={<Komentari />} />
     </Routes>
     </main>
   )
