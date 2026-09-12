@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.tsx";
+import { TerminManager } from "../models/TerminManager";
+import { validator } from "../models/IValidator";
 
 type Termin = {
   usluga: string;
@@ -38,16 +40,16 @@ function Zakazivanje() {
       return;
     }
 
-    if (ljubimac.trim().length < 2) {
+    if (!validator.validanTekst(ljubimac)) {
         setPoruka("Ime ljubimca mora imati najmanje 2 karaktera.");
         return;
     }
 
     // Provera da li je termin već zauzet
-    const terminZauzet = termini.some(
-      (termin) =>
-        termin.datum === datum &&
-        termin.vreme === vreme
+    const terminZauzet = TerminManager.terminJeZauzet(
+        termini,
+        datum,
+        vreme
     );
 
     if (terminZauzet) {
@@ -81,11 +83,6 @@ function Zakazivanje() {
     setLjubimac("");
     setDatum("");
     setVreme("");
-  };
-
-  const formatDatum = (datum: string) => {
-    const [godina, mesec, dan] = datum.split("-");
-    return `${dan}.${mesec}.${godina}.`;
   };
 
   return (
@@ -211,7 +208,7 @@ function Zakazivanje() {
 
                 <p>
                   <strong>Datum:</strong>{" "}
-                  {formatDatum(termin.datum)}
+                  {TerminManager.formatDatum(termin.datum)}
                 </p>
 
                 <p>
