@@ -624,6 +624,93 @@ main {
   color: #666666;
 }
 
+/* ZAKAZIVANJE */
+
+.zakazivanje-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.zakazivanje-content {
+  width: 100%;
+  flex: 1;
+  background-color: #dcdcdc;
+  padding: 60px 20px;
+}
+
+.zakazivanje-content h1 {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 400;
+  margin-bottom: 45px;
+}
+
+.zakazivanje-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 35px 45px;
+  border-radius: 10px;
+}
+
+.zakazivanje-grupa {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.zakazivanje-grupa label {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.zakazivanje-grupa input,
+.zakazivanje-grupa select {
+  padding: 12px 15px;
+  border: 1px solid #999;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+}
+
+.zakazi-btn {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #008b8b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 25px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.zakazi-btn:hover {
+  background-color: #006f6f;
+}
+
+.potvrda {
+  max-width: 600px;
+  margin: 35px auto 0;
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px 35px;
+}
+
+.potvrda h2 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.potvrda p {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
 /* =========================
    BELI PROSTOR
 ========================= */

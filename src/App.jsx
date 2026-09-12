@@ -5,6 +5,7 @@ import Pocetna from './pages/Pocetna.jsx';
 import Profil from "./pages/Profil.jsx";
 import Usluge from "./pages/Usluge.tsx";
 import Komentari from "./pages/Komentari.tsx";
+import Zakazivanje from "./pages/Zakazivanje.tsx";
 import './index.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path="/profil" element={<Profil />} />
       <Route path="/usluge" element={<Usluge />} />
       <Route path="/komentari" element={<Komentari />} />
+      <Route path="/zakazivanje" element={<Zakazivanje />} />
     </Routes>
     </main>
   )
