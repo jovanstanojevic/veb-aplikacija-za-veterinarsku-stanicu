@@ -220,9 +220,15 @@ function Zakazivanje() {
                 </p>
                 <button
                     type="button"
-                    onClick={() =>
-                    setTermini(termini.filter((_, i) => i !== index))
+                    onClick={() => {
+                    const potvrda = window.confirm(
+                    "Da li ste sigurni da želite da otkažete ovaj termin?"
+                    );
+
+                    if (potvrda) {
+                        setTermini(termini.filter((_, i) => i !== index));
                     }
+                }}
                 >
                     Otkaži termin
                 </button>
