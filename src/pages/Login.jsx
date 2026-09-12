@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from '../components/Buttno.jsx';
 import mojLogo from '../assets/shapa.jpg';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -51,7 +52,7 @@ function Login() {
       </form>
 
       <p className="footer-text">
-        Nemate nalog &rarr; <a href="/register" className="register-link">Registracija</a>
+        Nemate nalog &rarr; <Link to="/register" className="register-link">Registracija</Link>
       </p>
     </div>
   );
